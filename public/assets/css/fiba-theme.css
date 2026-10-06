@@ -1,0 +1,9 @@
+:root {
+    --bg-main: #0f172a;
+    --bg-card: #1e293b;
+    --accent-yellow: #facc15;
+}
+body {
+    background-color: var(--bg-main);
+    color: #ffffff;
+}
