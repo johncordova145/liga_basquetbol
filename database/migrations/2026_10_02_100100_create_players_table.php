@@ -10,17 +10,16 @@ return new class extends Migration
     {
         Schema::create('players', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('team_id')->constrained()->cascadeOnDelete();
-            $table->string('first_name', 80);
-            $table->string('last_name', 80);
-            $table->unsignedTinyInteger('jersey_number');
-            $table->string('position', 20);
-            $table->unsignedSmallInteger('height_cm')->nullable();
-            $table->date('birth_date')->nullable();
+            $table->foreignId('equipo_id')->constrained()->cascadeOnDelete();
+            $table->string('primer_nombre', 80);
+            $table->string('segundo_nombre', 80);
+            $table->unsignedTinyInteger('camiseta_numero');
+            $table->string('posicion', 20);
+            $table->unsignedSmallInteger('altura_cm')->nullable();
+            $table->date('cumpleaños')->nullable();
             $table->timestamps();
 
-            // Un dorsal no puede repetirse dentro del mismo equipo.
-            $table->unique(['team_id', 'jersey_number']);
+            $table->unique(['equipo_id', 'camiseta_numero']);
         });
     }
 

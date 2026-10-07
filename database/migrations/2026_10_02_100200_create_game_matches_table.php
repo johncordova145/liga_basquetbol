@@ -10,20 +10,20 @@ return new class extends Migration
     {
         Schema::create('game_matches', function (Blueprint $table) {
             $table->id();
-            // restrictOnDelete: la BD impide borrar un equipo que ya tiene partidos.
+
             $table->foreignId('home_team_id')->constrained('teams')->restrictOnDelete();
             $table->foreignId('away_team_id')->constrained('teams')->restrictOnDelete();
-            $table->dateTime('played_at');
-            $table->string('stage', 80)->nullable();            // "Zona A · Fase de grupos"
-            $table->string('venue', 120)->nullable();
-            $table->string('status', 12)->default('scheduled'); // scheduled | live | finished
-            $table->unsignedSmallInteger('home_score')->nullable();
-            $table->unsignedSmallInteger('away_score')->nullable();
+            $table->dateTime('fecha_partido');
+            $table->string('fase', 80)->nullable();           
+            $table->string('lugar', 120)->nullable();
+            $table->string('estado', 12)->default('scheduled'); 
+            $table->unsignedSmallInteger('goles_local')->nullable();
+            $table->unsignedSmallInteger('goles_visitante')->nullable();
             $table->timestamps();
 
-            // Índices para las consultas reales: partidos de un día y por estado.
-            $table->index('played_at');
-            $table->index(['status', 'played_at']);
+
+            $table->index('fecha_partido');
+            $table->index(['estado', 'fecha_partido']);
         });
     }
 
