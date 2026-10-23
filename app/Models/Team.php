@@ -19,4 +19,10 @@ class Team extends Model
     {
         return $this->hasMany(GameMatch::class, 'away_team_id');
     }
+    protected $guarded = [];
+    public const CATEGORIES = [
+        'mayores' => 'Mayores Varones',
+        'u19'     => 'U19',
+        'u14'     => 'U14',
+    ];
 }

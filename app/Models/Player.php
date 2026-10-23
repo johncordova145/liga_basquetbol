@@ -28,7 +28,7 @@ class Player extends Model
         return $this->belongsTo(Team::class);
     }
 
-    /** $player->full_name */
+
     protected function fullName(): Attribute
     {
         return Attribute::get(fn () => "{$this->first_name} {$this->last_name}");

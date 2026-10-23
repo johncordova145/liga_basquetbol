@@ -59,7 +59,7 @@ class GameMatch extends Model
         return $q->whereDate('played_at', $date);
     }
 
-    // ---- Ayudantes ----
+
     public function isFinished(): bool
     {
         return $this->status === self::FINISHED;
@@ -70,7 +70,7 @@ class GameMatch extends Model
         return $this->status === self::LIVE;
     }
 
-    /** ¿Hay marcador que mostrar? (en vivo o final) */
+
     public function hasScore(): bool
     {
         return $this->status !== self::SCHEDULED
@@ -78,7 +78,7 @@ class GameMatch extends Model
             && $this->away_score !== null;
     }
 
-    /** 'home' | 'away' | null (solo cuando el partido terminó). */
+
     public function winnerSide(): ?string
     {
         if (! $this->isFinished() || ! $this->hasScore()) {
