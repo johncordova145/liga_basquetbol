@@ -14,9 +14,8 @@ class User extends Authenticatable
     public const ROLE_ADMIN = 'admin';
     public const ROLE_USER = 'user';
 
-    // "role" NO es fillable a propósito: nadie puede volverse admin
-    // enviando un campo extra desde el formulario de registro.
-    protected $fillable = ['name', 'email', 'password'];
+
+    protected $fillable = ['name', 'email', 'password', 'role'];
 
     protected $hidden = ['password', 'remember_token'];
 

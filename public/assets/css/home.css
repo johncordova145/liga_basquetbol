@@ -1,0 +1,223 @@
+body {
+    background-color: #0b0b0b;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.league-nav {
+    background-color: #000000;
+    border-bottom: 2px solid #1f1f1f;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    height: 70px;
+}
+
+.league-brand {
+    font-weight: 900;
+    font-size: 1.1rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.league-brand img {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: #a0a0a0;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #ccff00;
+}
+
+.nav-links a.more-btn {
+    border: 1px solid #444;
+    padding: 6px 16px;
+    border-radius: 6px;
+    color: #fff;
+}
+
+.nav-links .admin-link {
+    color: #ffb703;
+}
+
+.main-content-layout {
+    max-width: 1400px;
+    margin: 30px auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 30px;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.right-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.poster-banner-section {
+    background-color: #121212;
+    border-radius: 16px;
+    padding: 25px;
+    border: 1px solid #222222;
+}
+
+.poster-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.poster-card {
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #333;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+
+.poster-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.section-header-title {
+    font-size: 1.4rem;
+    font-weight: 900;
+    font-style: italic;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.teams-gallery-block {
+    background: #111111;
+    border-radius: 16px;
+    padding: 25px;
+    border: 1px solid #222222;
+}
+
+.teams-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.team-card-img {
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+.team-card-img img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.team-card-title {
+    padding: 12px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-align: center;
+    background-color: #161616;
+    color: #ffb703;
+    text-transform: uppercase;
+}
+
+.leaders-section-block {
+    background: #111111;
+    border-radius: 16px;
+    padding: 25px;
+    border: 1px solid #222222;
+}
+
+.leaders-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.leader-card-img {
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+.leader-card-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.sidebar-widget {
+    background-color: #141414;
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid #222222;
+    text-align: center;
+}
+
+.sidebar-widget-title {
+    font-size: 0.85rem;
+    color: #ffb703;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.sidebar-widget img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+}
+
+.site-footer {
+    text-align: center;
+    padding: 30px;
+    color: #666;
+    font-size: 0.85rem;
+    border-top: 1px solid #1a1a1a;
+    margin-top: 50px;
+}
