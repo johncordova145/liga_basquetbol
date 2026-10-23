@@ -27,22 +27,58 @@
         </nav>
     </header>
 
+    <!-- BANNER PRINCIPAL ESTILO REFERENCIA -->
+    <section class="hero-banner-section">
+        <div class="hero-banner-content">
+            <div class="hero-text">
+                <span class="hero-badge">CAMPEONATO OFICIAL</span>
+                <h1 class="hero-title">Gran Apertura del Torneo de Básquetbol en Abancay</h1>
+                <p class="hero-desc">Vive la emoción del deporte ráfaga con los mejores equipos de la región disputando la copa principal en el Coliseo Cerrado.</p>
+                <a href="#" class="hero-btn">Leer Más &raquo;</a>
+            </div>
+            <div class="hero-image">
+                <img src="{{ asset('assets/img/afiches/sele_u19M.jpg') }}" alt="Selección U19 Masculino">
+            </div>
+        </div>
+
+        <!-- TARJETAS MINIATURA INFERIORES DEL BANNER -->
+        <div class="hero-thumbnails">
+            <div class="hero-thumb-card">
+                <img src="{{ asset('assets/img/afiches/vs_1.jfif') }}" alt="Partido Superior">
+                <span>Partidos de la Fecha - Categoría Superior</span>
+            </div>
+            <div class="hero-thumb-card">
+                <img src="{{ asset('assets/img/afiches/vs_2.jfif') }}" alt="Partido U15">
+                <span>Programación Oficial - Categoría U15</span>
+            </div>
+            <div class="hero-thumb-card">
+                <img src="{{ asset('assets/img/afiches/seleccion.jfif') }}" alt="Selección">
+                <span>Preparación de Selecciones Locales</span>
+            </div>
+            <div class="hero-thumb-card">
+                <img src="{{ asset('assets/img/afiches/torneo.jfif') }}" alt="Torneo">
+                <span>Fases Finales del Torneo Distrital</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENIDO PRINCIPAL Y SIDEBAR -->
     <main class="main-content-layout">
         <div class="left-column">
             <section class="poster-banner-section">
                 <h3 class="section-header-title">PRÓXIMOS ENFRENTAMIENTOS Y PROGRAMACIÓN</h3>
                 <div class="poster-grid">
                     <div class="poster-card">
-                        <img src="{{ asset('assets/img/afiches/vs_1.jpg') }}" alt="Partido Superior">
+                        <img src="{{ asset('assets/img/afiches/vs_1.jfif') }}" alt="Partido Superior">
                     </div>
                     <div class="poster-card">
-                        <img src="{{ asset('assets/img/afiches/vs_2.jpg') }}" alt="Partido U15">
+                        <img src="{{ asset('assets/img/afiches/vs_2.jfif') }}" alt="Partido U15">
                     </div>
                     <div class="poster-card">
-                        <img src="{{ asset('assets/img/afiches/seleccion.jpg') }}" alt="Selección y Competencia">
+                        <img src="{{ asset('assets/img/afiches/seleccion.jfif') }}" alt="Selección y Competencia">
                     </div>
                     <div class="poster-card">
-                        <img src="{{ asset('assets/img/afiches/torneo.jpg') }}" alt="Torneo Nacional">
+                        <img src="{{ asset('assets/img/afiches/torneo.jfif') }}" alt="Torneo Nacional">
                     </div>
                 </div>
             </section>
@@ -73,22 +109,16 @@
                 <h3 class="section-header-title">LÍDERES Y MÁXIMOS ANOTADORES</h3>
                 <div class="leaders-grid">
                     <div class="leader-card-img">
-                        <img src="{{ asset('assets/img/afiches/lider_u19.jpg') }}" alt="Líderes U19">
+                        <img src="{{ asset('assets/img/afiches/lider_u19.jfif') }}" alt="Líderes U19">
                     </div>
                     <div class="leader-card-img">
-                        <img src="{{ asset('assets/img/afiches/max_anota_u19.jpg') }}" alt="Máximas Anotadoras U19">
+                        <img src="{{ asset('assets/img/afiches/max_anota_u19.jfif') }}" alt="Máximas Anotadoras U19">
                     </div>
                     <div class="leader-card-img">
-                        <img src="{{ asset('assets/img/afiches/anotadores_1.jpg') }}" alt="Máximos Anotadores Varones">
+                        <img src="{{ asset('assets/img/afiches/anotadores_1.jfif') }}" alt="Máximos Anotadores Varones">
                     </div>
                     <div class="leader-card-img">
-                        <img src="{{ asset('assets/img/afiches/anotadores_3pt.jpg') }}" alt="Tripleros Varones">
-                    </div>
-                    <div class="leader-card-img">
-                        <img src="{{ asset('assets/img/afiches/anotadoras_1.jpg') }}" alt="Máximas Anotadoras Damas">
-                    </div>
-                    <div class="leader-card-img">
-                        <img src="{{ asset('assets/img/afiches/anotadoras_3pt.jpg') }}" alt="Tripleras Damas">
+                        <img src="{{ asset('assets/img/afiches/anotadores_3pt.jfif') }}" alt="Tripleros Varones">
                     </div>
                 </div>
             </section>
@@ -97,12 +127,12 @@
         <aside class="right-sidebar">
             <div class="sidebar-widget">
                 <div class="sidebar-widget-title">Cuadro Torneo Nacional U14</div>
-                <img src="{{ asset('assets/img/afiches/torneo_u14.jpg') }}" alt="Cuadro U14">
+                <img src="{{ asset('assets/img/afiches/torneo_U14.jpg') }}" alt="Cuadro U14">
             </div>
 
             <div class="sidebar-widget">
                 <div class="sidebar-widget-title">Programación del Torneo</div>
-                <img src="{{ asset('assets/img/afiches/torneo.jpg') }}" alt="Torneo Fecha">
+                <img src="{{ asset('assets/img/afiches/torneo.jfif') }}" alt="Torneo Fecha">
             </div>
 
             <div class="sidebar-widget">
