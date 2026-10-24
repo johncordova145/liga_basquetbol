@@ -1,51 +1,59 @@
-<div class="container my-5 text-white">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold text-warning m-0">Tabla de Posiciones</h2>
-        
-        <!-- Filtro por Categorías -->
-        <div class="btn-group" role="group">
-            <a href="?categoria=Mayores Varones" class="btn btn-outline-warning btn-sm {{ $categoria == 'Mayores Varones' ? 'active' : '' }}">Mayores</a>
-            <a href="?categoria=U19" class="btn btn-outline-warning btn-sm {{ $categoria == 'U19' ? 'active' : '' }}">U19</a>
-            <a href="?categoria=U14" class="btn btn-outline-warning btn-sm {{ $categoria == 'U14' ? 'active' : '' }}">U14</a>
-        </div>
-    </div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Posiciones - Guerreros del Ampay</title>
+    <link rel="stylesheet" href="{{ asset('assets/css/fiba-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="league-nav">
+            <div class="league-brand">
+                <img src="{{ asset('assets/img/logos/logo.png') }}" alt="Logo">
+                <span>GUERREROS DEL AMPAY</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{{ route('home') }}">Inicio</a></li>
+                <li><a href="#" class="active">Clasificación</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="table-responsive card bg-black border-secondary p-3">
-        <table class="table table-dark table-hover align-middle mb-0 text-center">
-            <thead>
-                <tr class="text-secondary border-bottom border-secondary small text-uppercase">
-                    <th class="text-start">#</th>
-                    <th class="text-start">Equipo</th>
-                    <th>PJ</th>
-                    <th>PG</th>
-                    <th>PP</th>
-                    <th>PF</th>
-                    <th>PC</th>
-                    <th>DIF</th>
-                    <th class="text-warning">PTS</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse($equipos as $index => $row)
-                    <tr>
-                        <td class="text-start fw-bold {{ $index < 4 ? 'text-warning' : 'text-muted' }}">{{ $index + 1 }}</td>
-                        <td class="text-start fw-bold fs-6">{{ $row->equipo }}</td>
-                        <td>{{ $row->pj }}</td>
-                        <td class="text-success fw-bold">{{ $row->pg }}</td>
-                        <td class="text-danger">{{ $row->pp }}</td>
-                        <td class="text-muted">{{ $row->pf }}</td>
-                        <td class="text-muted">{{ $row->pc }}</td>
-                        <td class="{{ $row->dif >= 0 ? 'text-success' : 'text-danger' }}">
-                            {{ $row->dif > 0 ? '+'.$row->dif : $row->dif }}
-                        </td>
-                        <td class="fw-bold fs-5 text-warning bg-dark">{{ $row->puntos }}</td>
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="9" class="text-muted py-4">No hay datos registrados para esta categoría.</td>
-                    </tr>
-                @endforelse
-            </tbody>
-        </table>
-    </div>
-</div>
+    <main class="main-content-layout" style="grid-template-columns: 1fr;">
+        <section class="poster-banner-section">
+            <h3 class="section-header-title">Tabla de Posiciones Oficial</h3>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; color: #fff; border-collapse: collapse; text-align: left;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid #333; color: #ffb703;">
+                            <th style="padding: 12px;">Pos</th>
+                            <th style="padding: 12px;">Equipo</th>
+                            <th style="padding: 12px;">PJ</th>
+                            <th style="padding: 12px;">PG</th>
+                            <th style="padding: 12px;">PP</th>
+                            <th style="padding: 12px;">PTS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Ejemplo de filas estáticas o dinámicas -->
+                        <tr style="border-bottom: 1px solid #222;">
+                            <td style="padding: 12px;">1</td>
+                            <td style="padding: 12px;">Club Miguel Grau</td>
+                            <td style="padding: 12px;">0</td>
+                            <td style="padding: 12px;">0</td>
+                            <td style="padding: 12px;">0</td>
+                            <td style="padding: 12px;">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Liga Distrital de Basketball Abancay - F.D.P.B. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
