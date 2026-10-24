@@ -10,14 +10,14 @@ return new class extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 100)->unique();
-            $table->string('codigo', 3)->unique();              
-            $table->string('categoria', 20)->default('hombres')->index(); 
-            $table->string('zona', 40)->nullable();          
-            $table->string('bandera', 100)->nullable();               
-            $table->string('ciudad', 100);
-            $table->string('entrenador', 100)->nullable();
-            $table->unsignedSmallInteger('fundacion')->nullable();
+            $table->string('name', 100)->unique();
+            $table->string('code', 3)->unique();              
+            $table->string('category', 20)->default('Masculino')->index(); 
+            $table->string('zone', 40)->nullable();          
+            $table->string('flag', 100)->nullable();               
+            $table->string('city', 100);
+            $table->string('coach', 100)->nullable();
+            $table->unsignedSmallInteger('founded')->nullable();
             $table->timestamps();
         });
     }

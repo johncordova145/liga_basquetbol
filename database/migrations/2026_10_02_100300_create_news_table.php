@@ -11,12 +11,12 @@ return new class extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
-            $table->string('titulo', 150);
+            $table->string('title', 150);
             $table->string('slug', 170)->unique();
-            $table->string('resumen', 255)->nullable();
-            $table->longText('contenido');
-            $table->string('imagen')->nullable();                    
-            $table->timestamp('publicado_at')->nullable()->index(); 
+            $table->string('excerpt', 255)->nullable();
+            $table->longText('content');
+            $table->string('image')->nullable();                    
+            $table->timestamp('published_at')->nullable()->index(); 
             $table->timestamps();
         });
     }

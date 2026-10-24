@@ -16,11 +16,11 @@
                 <span>GUERREROS DEL AMPAY</span>
             </div>
             <ul class="nav-links">
-                <li><a href="#" class="active">Inicio</a></li>
-                <li><a href="#">Partidos</a></li>
-                <li><a href="#">Noticias</a></li>
-                <li><a href="#">Clasificación</a></li>
-                <li><a href="#">Calendario</a></li>
+                <li><a href="<?php echo e(route('home')); ?>" class="<?php echo e(request()->routeIs('home') ? 'active' : ''); ?>">Inicio</a></li>
+                <li><a href="<?php echo e(route('matches.public')); ?>" class="<?php echo e(request()->routeIs('matches.public') ? 'active' : ''); ?>">Partidos</a></li>
+                <li><a href="<?php echo e(route('news.index')); ?>" class="<?php echo e(request()->routeIs('news.*') ? 'active' : ''); ?>">Noticias</a></li>
+                <li><a href="<?php echo e(route('ranking.public')); ?>" class="<?php echo e(request()->routeIs('ranking.public') ? 'active' : ''); ?>">Clasificación</a></li>
+                <li><a href="<?php echo e(route('calendar.public')); ?>" class="<?php echo e(request()->routeIs('calendar.public') ? 'active' : ''); ?>">Calendario</a></li>
                 <li><a href="#" class="more-btn">Más</a></li>
                 <li><a href="/admin/dashboard" class="admin-link">Panel Admin</a></li>
             </ul>
@@ -118,7 +118,7 @@
                         <img src="<?php echo e(asset('assets/img/afiches/anotadores_1.jfif')); ?>" alt="Máximos Anotadores Varones">
                     </div>
                     <div class="leader-card-img">
-                        <img src="<?php echo e(asset('assets/img/afiches/anotadores_3pt.jfif')); ?>" alt="Tripleros Varones">
+                        <img src="<?php echo e(asset('assets/img/afiches/anotadores_3p.jfif')); ?>" alt="Tripleros Varones">
                     </div>
                 </div>
             </section>

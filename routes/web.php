@@ -13,3 +13,4 @@ Route::get('/clasificacion', [PublicController::class, 'ranking'])->name('rankin
 Route::get('/calendario', [PublicController::class, 'calendar'])->name('calendar.public');
 Route::get('/posiciones', [StandingController::class, 'index'])->name('standings.index');
 Route::get('/noticias', [NewsController::class, 'index'])->name('news.index');
+

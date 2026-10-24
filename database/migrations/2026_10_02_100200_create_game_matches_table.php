@@ -13,17 +13,16 @@ return new class extends Migration
 
             $table->foreignId('home_team_id')->constrained('teams')->restrictOnDelete();
             $table->foreignId('away_team_id')->constrained('teams')->restrictOnDelete();
-            $table->dateTime('fecha_partido');
-            $table->string('fase', 80)->nullable();           
-            $table->string('lugar', 120)->nullable();
-            $table->string('estado', 12)->default('scheduled'); 
-            $table->unsignedSmallInteger('goles_local')->nullable();
-            $table->unsignedSmallInteger('goles_visitante')->nullable();
+            $table->dateTime('played_at');
+            $table->string('stage', 80)->nullable();          
+            $table->string('venue', 120)->nullable();
+            $table->string('status', 12)->default('scheduled'); 
+            $table->unsignedSmallInteger('home_score')->nullable();
+            $table->unsignedSmallInteger('away_score')->nullable();
             $table->timestamps();
 
-
-            $table->index('fecha_partido');
-            $table->index(['estado', 'fecha_partido']);
+            $table->index('played_at');
+            $table->index(['status', 'played_at']);
         });
     }
 

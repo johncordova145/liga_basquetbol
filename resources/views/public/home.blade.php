@@ -16,11 +16,11 @@
                 <span>GUERREROS DEL AMPAY</span>
             </div>
             <ul class="nav-links">
-                <li><a href="#" class="active">Inicio</a></li>
-                <li><a href="#">Partidos</a></li>
-                <li><a href="#">Noticias</a></li>
-                <li><a href="#">Clasificación</a></li>
-                <li><a href="#">Calendario</a></li>
+                <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Inicio</a></li>
+                <li><a href="{{ route('matches.public') }}" class="{{ request()->routeIs('matches.public') ? 'active' : '' }}">Partidos</a></li>
+                <li><a href="{{ route('news.index') }}" class="{{ request()->routeIs('news.*') ? 'active' : '' }}">Noticias</a></li>
+                <li><a href="{{ route('ranking.public') }}" class="{{ request()->routeIs('ranking.public') ? 'active' : '' }}">Clasificación</a></li>
+                <li><a href="{{ route('calendar.public') }}" class="{{ request()->routeIs('calendar.public') ? 'active' : '' }}">Calendario</a></li>
                 <li><a href="#" class="more-btn">Más</a></li>
                 <li><a href="/admin/dashboard" class="admin-link">Panel Admin</a></li>
             </ul>
@@ -118,7 +118,7 @@
                         <img src="{{ asset('assets/img/afiches/anotadores_1.jfif') }}" alt="Máximos Anotadores Varones">
                     </div>
                     <div class="leader-card-img">
-                        <img src="{{ asset('assets/img/afiches/anotadores_3pt.jfif') }}" alt="Tripleros Varones">
+                        <img src="{{ asset('assets/img/afiches/anotadores_3p.jfif') }}" alt="Tripleros Varones">
                     </div>
                 </div>
             </section>
