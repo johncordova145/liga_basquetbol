@@ -10,22 +10,23 @@ class Team extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nombre',
-        'codigo',
-        'categoria',
-        'zona',
-        'bandera',
-        'ciudad',
-        'entrenador',
-        'anio_fundacion',
+        'name',
+        'code',
+        'category',
+        'zone',
+        'flag',
+        'city',
+        'coach',
+        'founded',
     ];
 
     protected $guarded = [];
 
     public const CATEGORIES = [
-        'mayores' => 'Mayores Varones',
-        'u19'     => 'U19',
-        'u14'     => 'U14',
+        'hombres'  => 'Hombres',
+        'femenino' => 'Femenino',
+        'u19'      => 'U19',
+        'u14'      => 'U14',
     ];
 
     public function homeGames()
@@ -38,10 +39,10 @@ class Team extends Model
         return $this->hasMany(GameMatch::class, 'away_team_id');
     }
 
-    public static function standings($categoria = null, $group = null, $finishedMatches = null)
+    public static function standings($category = null, $group = null, $finishedMatches = null)
     {
-        $teams = self::when($categoria, function ($query, $categoria) {
-            return $query->where('categoria', $categoria);
+        $teams = self::when($category, function ($query, $category) {
+            return $query->where('category', $category);
         })->get();
 
         $matches = $finishedMatches ?? GameMatch::finished()->get();

@@ -10,36 +10,36 @@ class TeamSeeder extends Seeder
     public function run(): void
     {
         Team::create([
-            'nombre' => 'Leones de Andahuaylas',
-            'codigo' => 'AND',
-            'categoria' => 'hombres',
-            'zona' => 'Zona A',
-            'bandera' => 'leones.png',
-            'ciudad' => 'Andahuaylas',
-            'entrenador' => 'Carlos Mendoza',
-            'anio_fundacion' => 2015,
+            'name' => 'Leones de Andahuaylas',
+            'code' => 'AND',
+            'category' => 'hombres',
+            'zone' => 'Zona A',
+            'flag' => 'leones.png',
+            'city' => 'Andahuaylas',
+            'coach' => 'Carlos Mendoza',
+            'founded' => 2015,
         ]);
 
         Team::create([
-            'nombre' => 'Titanes de Abancay',
-            'codigo' => 'ABA',
-            'categoria' => 'hombres',
-            'zona' => 'Zona A',
-            'bandera' => 'titanes.png',
-            'ciudad' => 'Abancay',
-            'entrenador' => 'Luis Ramos',
-            'anio_fundacion' => 2018,
+            'name' => 'Titanes de Abancay',
+            'code' => 'ABA',
+            'category' => 'hombres',
+            'zone' => 'Zona A',
+            'flag' => 'titanes.png',
+            'city' => 'Abancay',
+            'coach' => 'Luis Ramos',
+            'founded' => 2018,
         ]);
 
         Team::create([
-            'nombre' => 'Águilas Doradas',
-            'codigo' => 'AGU',
-            'categoria' => 'hombres',
-            'zona' => 'Zona B',
-            'bandera' => 'aguilas.png',
-            'ciudad' => 'Cusco',
-            'entrenador' => 'Mario Quispe',
-            'anio_fundacion' => 2012,
+            'name' => 'Águilas Doradas',
+            'code' => 'AGU',
+            'category' => 'hombres',
+            'zone' => 'Zona B',
+            'flag' => 'aguilas.png',
+            'city' => 'Cusco',
+            'coach' => 'Mario Quispe',
+            'founded' => 2012,
         ]);
     }
 }

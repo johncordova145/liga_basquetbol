@@ -10,60 +10,62 @@ class StandingController extends Controller
 {
     public function index(Request $request)
     {
-        $categoria = $request->get('categoria', 'Mayores Varones');
+        $category = $request->get('categoria', 'hombres');
 
-        $equipos = Team::all()->map(function ($equipo) use ($categoria) {
-            $partidosLocal = GameMatch::where('equipo_local_id', $equipo->id)
-                ->where('categoria', $categoria)
-                ->where('estado', 'FINAL')
+        $teams = Team::all()->map(function ($team) use ($category) {
+            $homeMatches = GameMatch::where('home_team_id', $team->id)
+                ->where('stage', 'like', '%' . $category . '%')
+                ->where('status', 'finished')
                 ->get();
 
-            $partidosVisitante = GameMatch::where('equipo_visitante_id', $equipo->id)
-                ->where('categoria', $categoria)
-                ->where('estado', 'FINAL')
+            $awayMatches = GameMatch::where('away_team_id', $team->id)
+                ->where('stage', 'like', '%' . $category . '%')
+                ->where('status', 'finished')
                 ->get();
 
-            $pj = $partidosLocal->count() + $partidosVisitante->count();
+            $pj = $homeMatches->count() + $awayMatches->count();
             $pg = 0;
             $pp = 0;
             $pf = 0;
             $pc = 0;
 
-            foreach ($partidosLocal as $m) {
-                $pf += $m->puntos_local;
-                $pc += $m->puntos_visitante;
-                if ($m->puntos_local > $m->puntos_visitante) {
+            foreach ($homeMatches as $m) {
+                $pf += $m->home_score;
+                $pc += $m->away_score;
+                if ($m->home_score > $m->away_score) {
                     $pg++;
                 } else {
                     $pp++;
                 }
             }
 
-            foreach ($partidosVisitante as $m) {
-                $pf += $m->puntos_visitante;
-                $pc += $m->puntos_local;
-                if ($m->puntos_visitante > $m->puntos_local) {
+            foreach ($awayMatches as $m) {
+                $pf += $m->away_score;
+                $pc += $m->home_score;
+                if ($m->away_score > $m->home_score) {
                     $pg++;
                 } else {
                     $pp++;
                 }
             }
 
-            $puntos = ($pg * 2) + ($pp * 1);
+            $points = ($pg * 2) + ($pp * 1);
             $dif = $pf - $pc;
 
             return (object) [
-                'equipo' => $equipo->nombre,
+                'equipo' => $team->name,
                 'pj' => $pj,
                 'pg' => $pg,
                 'pp' => $pp,
                 'pf' => $pf,
                 'pc' => $pc,
                 'dif' => $dif,
-                'puntos' => $puntos,
+                'puntos' => $points,
             ];
         })->sortByDesc('puntos')->values();
 
-        return view('public.standings', compact('equipos', 'categoria'));
+        $categoria = $category;
+
+        return view('public.standings', compact('teams', 'categoria'));
     }
 }
