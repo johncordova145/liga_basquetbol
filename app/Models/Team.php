@@ -28,6 +28,10 @@ class Team extends Model
         'u19'      => 'U19',
         'u14'      => 'U14',
     ];
+    public function players()
+    {
+        return $this->hasMany(Player::class);
+    }
 
     public function homeGames()
     {
@@ -83,5 +87,11 @@ class Team extends Model
 
             return $team;
         })->sortByDesc('puntos')->values();
+    }
+    public static function leadersBy($standingsCollection, $column, $descending = true)
+    {
+        return $descending 
+            ? $standingsCollection->sortByDesc($column)->take(3) 
+            : $standingsCollection->sortBy($column)->take(3);
     }
 }

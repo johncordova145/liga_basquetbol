@@ -23,7 +23,7 @@ class TeamController extends Controller
             ->orderBy('category')->orderBy('name')
             ->paginate(12)->withQueryString();
 
-        return view('admin.teams.index', compact('teams', 'category'));
+        return view('admin.teams.index', compact('teams'));
     }
 
     public function create(): View

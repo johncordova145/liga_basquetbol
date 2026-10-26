@@ -22,16 +22,20 @@ class MatchController extends Controller
         $matches = GameMatch::with(['homeTeam', 'awayTeam'])
             ->when($status, fn ($q) => $q->where('status', $status))
             ->latest('played_at')
+            
             ->paginate(15)->withQueryString();
 
-        return view('admin.matches.index', compact('matches', 'status'));
+        return view('admin.matches.index', compact('matches'));
     }
 
     public function create(): View
     {
         return view('admin.matches.create', [
-            'game' => new GameMatch(['status' => GameMatch::SCHEDULED, 'played_at' => now()->addDay()->setTime(19, 0)]),
-            'teams' => $this->teamsByCategory(),
+        'game' => new GameMatch([
+            'status' => 'scheduled', 
+            'played_at' => now()->addDay()->setTime(19, 0)
+        ]),
+            'teams' => \App\Models\Team::orderBy('name')->get(),
         ]);
     }
 

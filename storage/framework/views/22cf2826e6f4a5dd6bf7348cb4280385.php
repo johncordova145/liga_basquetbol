@@ -4,7 +4,7 @@
 <div class="bg-[#0f172a] text-white min-h-screen py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <!-- NOTICIAS MÁS IMPORTANTES (GRID / CARRUSEL SUPERIOR) -->
+
         <h2 class="text-2xl font-bold mb-4 tracking-wide">Noticias más importantes</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
@@ -34,15 +34,13 @@
             <?php endif; ?>
         </div>
 
-        <!-- CONTENIDO PRINCIPAL Y WIDGET LATERAL -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
-            <!-- COLUMNA IZQUIERDA: TODAS LAS NOTICIAS + FILTROS -->
+
             <div class="lg:col-span-2">
                 <h2 class="text-xl font-bold mb-4">Todas las noticias</h2>
 
-                <!-- Barra de búsqueda y filtros -->
-                <form method="GET" action="<?php echo e(route('public.news')); ?>" class="bg-gray-900 border border-gray-800 rounded-xl p-4 mb-6">
+                <form method="GET" action="<?php echo e(route('news.index')); ?>" class="bg-gray-900 border border-gray-800 rounded-xl p-4 mb-6">
                     <div class="relative">
                         <input type="text" 
                                name="search" 
@@ -57,7 +55,7 @@
                     </div>
                 </form>
 
-                <!-- Listado de Noticias -->
+
                 <div class="space-y-6">
                     <?php $__empty_1 = true; $__currentLoopData = $news; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <div class="bg-gray-900 border border-gray-800 rounded-xl p-4 flex flex-col md:flex-row gap-5 hover:border-gray-700 transition">
@@ -96,7 +94,7 @@
                         </div>
                     <?php endif; ?>
 
-                    <!-- Paginación -->
+  
                     <div class="mt-6">
                         <?php echo e($news->appends(request()->query())->links('pagination::tailwind')); ?>
 
@@ -104,7 +102,7 @@
                 </div>
             </div>
 
-            <!-- COLUMNA DERECHA: WIDGET DE RANKING DE LA LIGA -->
+
             <div>
                 <div class="bg-gray-900 border border-gray-800 rounded-xl p-5 sticky top-6">
                     <div class="flex justify-between items-center mb-4">
@@ -137,4 +135,4 @@
     </div>
 </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.public', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Lupin\OneDrive\Documentos\IngenieriaSoftware\liga-basquetbol\resources\views/public/news.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.fiba', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Lupin\OneDrive\Documentos\IngenieriaSoftware\liga-basquetbol\resources\views/public/news.blade.php ENDPATH**/ ?>

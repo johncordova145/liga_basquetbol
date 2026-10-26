@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración - Liga de Básquetbol</title>
-    <link rel="stylesheet" href="{{ asset('assets/css/fiba-theme.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/layouts.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/fiba-theme.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ asset('assets/css/matches.css') }}">
 </head>
 <body class="admin-body">
     <div class="admin-wrapper">

@@ -22,18 +22,15 @@ class PlayerController extends Controller
             ->orderBy('team_id')->orderBy('jersey_number')
             ->paginate(15)->withQueryString();
 
-        return view('admin.players.index', [
-            'players' => $players,
-            'teams' => Team::orderBy('name')->get(),
-            'teamId' => $teamId,
-        ]);
+        return view('admin.players.index', compact('players'));
+        
     }
 
     public function create(Request $request): View
     {
         return view('admin.players.create', [
             'player' => new Player(['team_id' => $request->integer('equipo') ?: null]),
-            'teams' => Team::orderBy('name')->get(),
+            'teams' => \App\Models\Team::all(),
         ]);
     }
 

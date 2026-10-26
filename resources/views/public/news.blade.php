@@ -1,10 +1,10 @@
-@extends('layouts.public')
+@extends('layouts.fiba')
 
 @section('content')
 <div class="bg-[#0f172a] text-white min-h-screen py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <!-- NOTICIAS MÁS IMPORTANTES (GRID / CARRUSEL SUPERIOR) -->
+
         <h2 class="text-2xl font-bold mb-4 tracking-wide">Noticias más importantes</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
@@ -33,15 +33,13 @@
             @endforelse
         </div>
 
-        <!-- CONTENIDO PRINCIPAL Y WIDGET LATERAL -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
-            <!-- COLUMNA IZQUIERDA: TODAS LAS NOTICIAS + FILTROS -->
+
             <div class="lg:col-span-2">
                 <h2 class="text-xl font-bold mb-4">Todas las noticias</h2>
 
-                <!-- Barra de búsqueda y filtros -->
-                <form method="GET" action="{{ route('public.news') }}" class="bg-gray-900 border border-gray-800 rounded-xl p-4 mb-6">
+                <form method="GET" action="{{ route('news.index') }}" class="bg-gray-900 border border-gray-800 rounded-xl p-4 mb-6">
                     <div class="relative">
                         <input type="text" 
                                name="search" 
@@ -56,7 +54,7 @@
                     </div>
                 </form>
 
-                <!-- Listado de Noticias -->
+
                 <div class="space-y-6">
                     @forelse($news as $item)
                         <div class="bg-gray-900 border border-gray-800 rounded-xl p-4 flex flex-col md:flex-row gap-5 hover:border-gray-700 transition">
@@ -94,14 +92,14 @@
                         </div>
                     @endforelse
 
-                    <!-- Paginación -->
+  
                     <div class="mt-6">
                         {{ $news->appends(request()->query())->links('pagination::tailwind') }}
                     </div>
                 </div>
             </div>
 
-            <!-- COLUMNA DERECHA: WIDGET DE RANKING DE LA LIGA -->
+
             <div>
                 <div class="bg-gray-900 border border-gray-800 rounded-xl p-5 sticky top-6">
                     <div class="flex justify-between items-center mb-4">

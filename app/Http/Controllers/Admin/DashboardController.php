@@ -12,7 +12,7 @@ use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
-    public function __invoke(): View
+    public function index(): View
     {
         return view('admin.dashboard', [
             'stats' => [
