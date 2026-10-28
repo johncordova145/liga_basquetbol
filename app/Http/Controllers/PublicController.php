@@ -9,14 +9,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\View\View;
 
-/** Vistas de consulta pública: Inicio, Partidos, Clasificación, Calendario, y los detalles. */
 class PublicController extends Controller
 {
+    public function index(): View
+    {
+        $news = News::whereNotNull('published_at')->latest('published_at')->paginate(9);
+        
+        return view('public.news.index', compact('news'));
+    }
     public function home(): View
     {
-        $news = News::published()->latest('published_at')->take(8)->get();
+        $news = News::whereNotNull('published_at')->latest('published_at')->paginate(6);
 
-        // Partidos de hoy; si no hay, se muestran los próximos.
+        
         $matches = GameMatch::with(['homeTeam', 'awayTeam'])->onDate(today())->orderBy('played_at')->get();
         $matchesTitle = 'Partidos de hoy';
 
@@ -27,7 +32,7 @@ class PublicController extends Controller
             $matchesTitle = 'Próximos partidos';
         }
 
-        // Top 5 de cada categoría (una sola consulta de partidos finalizados).
+     
         $finished = GameMatch::finished()->get();
         $tables = [];
         foreach (Team::CATEGORIES as $key => $label) {
@@ -46,10 +51,10 @@ class PublicController extends Controller
             ->orderBy('played_at')
             ->get();
 
-        // Se agrupan por categoría (la del equipo local), como FIBA agrupa por competición.
+        
         $groups = $matches->groupBy(fn ($m) => $m->homeTeam->category);
 
-        // Tira de 10 días: 3 antes y 6 después de la fecha elegida.
+    
         $days = collect(range(-3, 6))->map(fn ($offset) => $selected->copy()->addDays($offset));
 
         return view('public.matches', [
@@ -120,21 +125,21 @@ class PublicController extends Controller
 
     public function newsShow(News $news): View
     {
-        abort_unless($news->isPublished(), 404); // los borradores no se ven
+        abort_unless($news->isPublished(), 404); 
 
         $others = News::published()->whereKeyNot($news->id)->latest('published_at')->take(3)->get();
 
         return view('public.news-show', compact('news', 'others'));
     }
 
-    // ---- Ayudantes privados ----
+   
     private function parseDate(?string $value): Carbon
     {
         if ($value && preg_match('/^\d{4}-\d{2}-\d{2}$/', $value)) {
             try {
                 return Carbon::createFromFormat('Y-m-d', $value)->startOfDay();
             } catch (\Throwable) {
-                // valor imposible (2026-02-31): se cae a "hoy"
+     
             }
         }
 

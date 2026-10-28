@@ -23,12 +23,12 @@
                 <li><a href="{{ route('ranking.public') }}" class="{{ request()->routeIs('ranking.public') ? 'active' : '' }}">Clasificación</a></li>
                 <li><a href="{{ route('calendar.public') }}" class="{{ request()->routeIs('calendar.public') ? 'active' : '' }}">Calendario</a></li>
                 <li><a href="#" class="more-btn">Más</a></li>
-                <li><a href="/admin/dashboard" class="admin-link">Panel Admin</a></li>
+                <li><a href="{{ route('admin.dashboard') }}" class="admin-link">Panel Admin</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- BANNER PRINCIPAL ESTILO REFERENCIA -->
+
     <section class="hero-banner-section">
         <div class="hero-banner-content">
             <div class="hero-text">
@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        <!-- TARJETAS MINIATURA INFERIORES DEL BANNER -->
+  
         <div class="hero-thumbnails">
             <div class="hero-thumb-card">
                 <img src="{{ asset('assets/img/afiches/vs_1.jfif') }}" alt="Partido Superior">
@@ -63,7 +63,7 @@
         </div>
     </section>
 
-    <!-- CONTENIDO PRINCIPAL Y SIDEBAR -->
+  
     <main class="main-content-layout">
         <div class="left-column">
             <section class="poster-banner-section">
@@ -141,6 +141,7 @@
                 <img src="{{ asset('assets/img/logos/logo.png') }}" alt="Logo Oficial">
             </div>
         </aside>
+        
     </main>
 
     <footer class="site-footer">

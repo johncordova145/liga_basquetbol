@@ -23,7 +23,7 @@
                 <li><a href="<?php echo e(route('ranking.public')); ?>">Clasificación</a></li>
                 <li><a href="<?php echo e(route('calendar.public')); ?>">Calendario</a></li>
                 <li><a href="#" class="more-btn">Más</a></li>
-                <li><a href="/admin/dashboard" class="admin-link">Panel Admin</a></li>
+                <li><a href="<?php echo e(route('admin.dashboard')); ?>" class="admin-link">Panel Admin</a></li>
             </ul>
         </nav>
     </header>

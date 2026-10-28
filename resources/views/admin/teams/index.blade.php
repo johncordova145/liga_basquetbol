@@ -32,12 +32,12 @@
                     @forelse($teams as $team)
                         <tr class="hover:bg-slate-800/50 transition">
                             <td class="py-3 px-4 font-medium text-white">{{ $team->id }}</td>
-                            <td class="py-3 px-4 font-semibold text-white">{{ $team->nombre }}</td>
-                            <td class="py-3 px-4 text-gray-400">{{ $team->codigo }}</td>
-                            <td class="py-3 px-4">{{ $team->categoria }}</td>
-                            <td class="py-3 px-4">{{ $team->zona }}</td>
-                            <td class="py-3 px-4">{{ $team->ciudad ?? 'Abancay' }}</td>
-                            <td class="py-3 px-4">{{ $team->entrenador }}</td>
+                            <td class="py-3 px-4 font-semibold text-white">{{ $team->name }}</td>
+                            <td class="py-3 px-4 text-gray-400">{{ $team->code }}</td>
+                            <td class="py-3 px-4">{{ $team->category }}</td>
+                            <td class="py-3 px-4">{{ $team->zone }}</td>
+                            <td class="py-3 px-4">{{ $team->city ?? 'Abancay' }}</td>
+                            <td class="py-3 px-4">{{ $team->coach }}</td>
                             <td class="py-3 px-4 text-center space-x-2">
                                 <a href="{{ route('admin.teams.edit', $team) }}" class="inline-block bg-amber-500/10 text-amber-400 hover:bg-amber-500/20 px-3 py-1 rounded text-xs font-medium transition">Editar</a>
                                 <form action="{{ route('admin.teams.destroy', $team) }}" method="POST" class="inline-block">

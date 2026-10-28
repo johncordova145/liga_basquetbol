@@ -31,36 +31,64 @@ class TeamController extends Controller
         return view('admin.teams.create', ['team' => new Team(['category' => 'hombres'])]);
     }
 
-    public function store(StoreTeamRequest $request): RedirectResponse
+    public function store(StoreTeamRequest $request)
     {
-        $data = $request->safe()->except('flag');
+        $data = $request->validated();
 
+        
         if ($request->hasFile('flag')) {
-            $data['flag'] = $this->storeImage($request->file('flag'), 'flags');
+            $file = $request->file('flag');
+            
+            if ($file->isValid()) {
+                $filename = time() . '_' . $file->getClientOriginalName();
+
+                $file->move(public_path('storage/teams'), $filename);
+                
+
+                $data['flag'] = $filename;
+            }
+        } else {
+            $data['flag'] = null;
         }
 
         Team::create($data);
 
-        return redirect()->route('admin.teams.index')->with('success', 'Equipo creado.');
+        return redirect()->route('admin.teams.index')->with('success', '¡Equipo registrado con éxito!');
     }
 
-    public function edit(Team $team): View
+    public function edit(Team $team)
     {
         return view('admin.teams.edit', compact('team'));
     }
 
-    public function update(UpdateTeamRequest $request, Team $team): RedirectResponse
+    public function update(Request $request, Team $team)
     {
-        $data = $request->safe()->except('flag');
+   
+        $data = $request->validate([
+            'name'     => ['required', 'string', 'max:100', \Illuminate\Validation\Rule::unique('teams', 'name')->ignore($team->id)],
+            'code'     => ['required', 'string', 'max:50', \Illuminate\Validation\Rule::unique('teams', 'code')->ignore($team->id)],
+            'category' => ['required', 'string', 'max:100'],
+            'zone'     => ['nullable', 'string', 'max:100'],
+            'city'     => ['nullable', 'string', 'max:100'],
+            'coach'    => ['nullable', 'string', 'max:255'],
+            'founded'  => ['nullable', 'integer'],
+            'flag'     => ['nullable', 'image', 'max:2048'],
+        ]);
+
 
         if ($request->hasFile('flag')) {
-            $this->deleteImage($team->flag, 'flags');
-            $data['flag'] = $this->storeImage($request->file('flag'), 'flags');
+            $file = $request->file('flag');
+            if ($file->isValid()) {
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('storage/teams'), $filename);
+                $data['flag'] = $filename;
+            }
         }
+
 
         $team->update($data);
 
-        return redirect()->route('admin.teams.index')->with('success', 'Equipo actualizado.');
+        return redirect()->route('admin.teams.index')->with('success', '¡Equipo actualizado con éxito!');
     }
 
     public function destroy(Team $team): RedirectResponse

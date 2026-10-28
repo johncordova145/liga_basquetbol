@@ -28,10 +28,10 @@
                     @forelse($news as $item)
                         <tr class="hover:bg-slate-800/50 transition">
                             <td class="py-3 px-4 font-medium text-white">{{ $item->id }}</td>
-                            <td class="py-3 px-4 font-semibold text-white">{{ $item->titulo }}</td>
+                            <td class="py-3 px-4 font-semibold text-white">{{ $item->title }}</td>
                             <td class="py-3 px-4">
                                 <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                                    {{ $item->categoria ?? 'Comunicado' }}
+                                    {{ $item->category ?? 'Comunicado' }}
                                 </span>
                             </td>
                             <td class="py-3 px-4 text-gray-400 text-xs">{{ $item->created_at ? $item->created_at->format('d/m/Y H:i') : '-' }}</td>

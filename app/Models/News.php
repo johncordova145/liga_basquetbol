@@ -10,16 +10,26 @@ use Illuminate\Support\Str;
 
 class News extends Model
 {
-
     protected $table = 'news';
 
-    protected $fillable = ['user_id', 'title', 'excerpt', 'body', 'image', 'published_at'];
+    protected $fillable = [
+        'user_id', 
+        'title', 
+        'slug',         
+        'excerpt', 
+        'content', 
+        'image', 
+        'published_at'
+    ];
+    
 
-    protected $casts = ['published_at' => 'datetime'];
+    protected $casts = [
+        'published_at' => 'datetime'
+    ];
 
     protected static function booted(): void
     {
-        static::creating(function (News $news) {
+        static::creating(function ( $news) {
             if ($news->slug) {
                 return;
             }
@@ -40,26 +50,5 @@ class News extends Model
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
-    }
-
-    public function scopePublished(Builder $q): Builder
-    {
-        return $q->whereNotNull('published_at')->where('published_at', '<=', now());
-    }
-
-    public function isPublished(): bool
-    {
-        return $this->published_at !== null && $this->published_at->lte(now());
-    }
-
-    protected function imageUrl(): Attribute
-    {
-        return Attribute::get(fn () => $this->image ? asset('assets/img/news/' . $this->image) : null);
-    }
-
-
-    protected function summary(): Attribute
-    {
-        return Attribute::get(fn () => $this->excerpt ?: Str::limit(strip_tags($this->body), 140));
     }
 }

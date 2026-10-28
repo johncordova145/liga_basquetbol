@@ -2,32 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\News;
-use App\Models\Team;
-use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
-class NewsController extends Controller
+abstract class Controller
 {
-    public function index(Request $request)
+    protected function storeImage(UploadedFile $file, string$folder): string
     {
-        // 1. Noticias destacadas
-        $featuredNews = News::latest('published_at')->take(4)->get();
+        $name = Str::random(24) . '.' .$file->extension();
+        $destinationPath = public_path("assets/img/{$folder}");
 
-        // 2. Consulta de noticias
-        $query = News::latest('published_at');
-
-        if ($request->filled('search')) {
-            $query->where('title', 'like', '%' . $request->search . '%')
-                  ->orWhere('excerpt', 'like', '%' . $request->search . '%')
-                  ->orWhere('content', 'like', '%' . $request->search . '%');
+        if (!File::exists($destinationPath)) {
+            File::makeDirectory($destinationPath, 0755, true);
         }
 
-        $news = $query->paginate(6);
+        File::copy($file->getRealPath(), "{$destinationPath}/{$name}");
 
-        // 3. Equipos para el widget lateral de ranking
-        $rankingTeams = Team::orderBy('name', 'asc')->take(5)->get();
+        return $name;
+    }
 
-        // Aseúrate de incluir 'rankingTeams' dentro del compact
-        return view('public.news', compact('featuredNews', 'news', 'rankingTeams'));
+    protected function deleteImage(?string $name, string$folder): void
+    {
+        if ($name) {
+            File::delete(public_path("assets/img/{$folder}/{$name}"));
+        }
     }
 }

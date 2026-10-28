@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-/** "GameMatch" y no "Match": `match` es palabra reservada en PHP 8. */
+
 class GameMatch extends Model
 {
     public const SCHEDULED = 'scheduled';
@@ -38,7 +38,7 @@ class GameMatch extends Model
         return $this->belongsTo(Team::class, 'away_team_id');
     }
 
-    // ---- Scopes: GameMatch::finished()->get() ----
+
     public function scopeFinished(Builder $q): Builder
     {
         return $q->where('status', self::FINISHED);

@@ -28,10 +28,10 @@
                     <?php $__empty_1 = true; $__currentLoopData = $news; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <tr class="hover:bg-slate-800/50 transition">
                             <td class="py-3 px-4 font-medium text-white"><?php echo e($item->id); ?></td>
-                            <td class="py-3 px-4 font-semibold text-white"><?php echo e($item->titulo); ?></td>
+                            <td class="py-3 px-4 font-semibold text-white"><?php echo e($item->title); ?></td>
                             <td class="py-3 px-4">
                                 <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                                    <?php echo e($item->categoria ?? 'Comunicado'); ?>
+                                    <?php echo e($item->category ?? 'Comunicado'); ?>
 
                                 </span>
                             </td>

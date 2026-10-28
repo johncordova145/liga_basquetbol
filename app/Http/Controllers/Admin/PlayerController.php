@@ -34,12 +34,21 @@ class PlayerController extends Controller
         ]);
     }
 
-    public function store(StorePlayerRequest $request): RedirectResponse
+    public function store(StorePlayerRequest $request) // O Request $request si validas directo
     {
-        $player = Player::create($request->validated());
+     
+        $data = $request->validated();
+        Player::create([
+            'first_name'    => $request->first_name,
+            'last_name'     => $request->last_name,
+            'team_id'       => $request->team_id,
+            'jersey_number' => $request->jersey_number,
+            'position'      => $request->position,
+            'birthdate'    => $request->birthdate,
+            'height_cm'     => $request->height_cm,
+        ]);
 
-        return redirect()->route('admin.players.index', ['equipo' => $player->team_id])
-            ->with('success', 'Jugador agregado.');
+        return redirect()->route('admin.players.index')->with('success', '¡Jugador registrado con éxito!');
     }
 
     public function edit(Player $player): View

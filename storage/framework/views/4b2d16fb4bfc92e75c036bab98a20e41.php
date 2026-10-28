@@ -2,7 +2,7 @@
 
 <?php $__env->startSection('content'); ?>
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <!-- Cabecera de la sección -->
+
     <div class="flex justify-between items-center mb-6">
         <div>
             <h1 class="text-2xl font-bold text-white">Gestión de Equipos</h1>
@@ -13,7 +13,6 @@
         </a>
     </div>
 
-    <!-- Contenedor de la tabla -->
     <div class="bg-slate-900 border border-slate-800 rounded-xl shadow-lg overflow-hidden">
         <div class="overflow-x-auto">
             <table class="w-full text-left border-collapse">
@@ -33,12 +32,12 @@
                     <?php $__empty_1 = true; $__currentLoopData = $teams; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $team): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <tr class="hover:bg-slate-800/50 transition">
                             <td class="py-3 px-4 font-medium text-white"><?php echo e($team->id); ?></td>
-                            <td class="py-3 px-4 font-semibold text-white"><?php echo e($team->nombre); ?></td>
-                            <td class="py-3 px-4 text-gray-400"><?php echo e($team->codigo); ?></td>
-                            <td class="py-3 px-4"><?php echo e($team->categoria); ?></td>
-                            <td class="py-3 px-4"><?php echo e($team->zona); ?></td>
-                            <td class="py-3 px-4"><?php echo e($team->ciudad ?? 'Abancay'); ?></td>
-                            <td class="py-3 px-4"><?php echo e($team->entrenador); ?></td>
+                            <td class="py-3 px-4 font-semibold text-white"><?php echo e($team->name); ?></td>
+                            <td class="py-3 px-4 text-gray-400"><?php echo e($team->code); ?></td>
+                            <td class="py-3 px-4"><?php echo e($team->category); ?></td>
+                            <td class="py-3 px-4"><?php echo e($team->zone); ?></td>
+                            <td class="py-3 px-4"><?php echo e($team->city ?? 'Abancay'); ?></td>
+                            <td class="py-3 px-4"><?php echo e($team->coach); ?></td>
                             <td class="py-3 px-4 text-center space-x-2">
                                 <a href="<?php echo e(route('admin.teams.edit', $team)); ?>" class="inline-block bg-amber-500/10 text-amber-400 hover:bg-amber-500/20 px-3 py-1 rounded text-xs font-medium transition">Editar</a>
                                 <form action="<?php echo e(route('admin.teams.destroy', $team)); ?>" method="POST" class="inline-block">
@@ -57,7 +56,7 @@
             </table>
         </div>
 
-        <!-- Paginación -->
+     
         <?php if(method_exists($teams, 'links')): ?>
             <div class="p-4 border-t border-slate-800 bg-slate-950/30">
                 <?php echo e($teams->links('vendor.pagination.fiba')); ?>

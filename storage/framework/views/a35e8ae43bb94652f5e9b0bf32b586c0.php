@@ -17,14 +17,26 @@
     <div class="bg-slate-900 border border-slate-800 rounded-xl shadow-xl p-6 sm:p-8">
         <form action="<?php echo e(route('admin.players.store')); ?>" method="POST">
             <?php echo csrf_field(); ?>
+        <?php if($errors->any()): ?>
+            <div class="bg-red-500 text-white p-4 rounded-lg mb-4">
+                <ul>
+                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li><?php echo e($error); ?></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </ul>
+            </div>
+        <?php endif; ?>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
               
                 <div>
                     <label class="block text-sm font-medium text-gray-300 mb-2">Nombre Completo</label>
-                    <input type="text" name="nombre" value="<?php echo e(old('nombre')); ?>" required
+                    <input type="text" name="first_name" value="<?php echo e(old('first_name')); ?>" required
                         class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-yellow-500 transition"
-                        placeholder="Ej. Carlos Mendoza">
+                        placeholder="Ej. Carlos">
+                    <input type="text" name="last_name" value="<?php echo e(old('last_name')); ?>" required
+                        class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-yellow-500 transition"
+                        placeholder="Ej. Mendoza">
                 </div>
 
             
@@ -44,7 +56,7 @@
               
                 <div>
                     <label class="block text-sm font-medium text-gray-300 mb-2">Número de Camiseta (#)</label>
-                    <input type="number" name="numero" value="<?php echo e(old('numero')); ?>" required
+                    <input type="number" name="jersey_number" value="<?php echo e(old('jersey_number')); ?>" required
                         class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-yellow-500 transition"
                         placeholder="Ej. 23">
                 </div>
@@ -52,7 +64,7 @@
                
                 <div>
                     <label class="block text-sm font-medium text-gray-300 mb-2">Posición</label>
-                    <select name="posicion" required
+                    <select name="position" required
                         class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-yellow-500 transition">
                         <option value="">Seleccione la posición</option>
                         <option value="Base">Base (Point Guard)</option>
@@ -66,7 +78,7 @@
            
                 <div>
                     <label class="block text-sm font-medium text-gray-300 mb-2">Edad</label>
-                    <input type="number" name="edad" value="<?php echo e(old('edad')); ?>"
+                    <input type="date" name="birth_date" value="<?php echo e(old('birth_date')); ?>"
                         class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-yellow-500 transition"
                         placeholder="Ej. 21">
                 </div>
@@ -74,7 +86,7 @@
    
                 <div>
                     <label class="block text-sm font-medium text-gray-300 mb-2">Estatura (m)</label>
-                    <input type="text" name="estatura" value="<?php echo e(old('estatura')); ?>"
+                    <input type="number" name="height_cm" value="<?php echo e(old('height_cm')); ?>"
                         class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-yellow-500 transition"
                         placeholder="Ej. 1.85m">
                 </div>

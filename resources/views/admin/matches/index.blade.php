@@ -31,26 +31,46 @@
                     @forelse($matches as $match)
                         <tr class="hover:bg-slate-800/50 transition">
                             <td class="py-3 px-4 font-medium text-white">{{ $match->id }}</td>
-                            <td class="py-3 px-4 font-semibold text-white">{{ $match->homeTeam->nombre ?? 'Local' }}</td>
+                            
+   
+                            <td class="py-3 px-4 font-semibold text-white">
+                                {{ $match->homeTeam->name ?? 'Local' }}
+                            </td>
+
+                            <!-- Marcador -->
                             <td class="py-3 px-4 text-center font-bold text-yellow-400">
                                 {{ $match->home_score ?? 0 }} - {{ $match->away_score ?? 0 }}
                             </td>
-                            <td class="py-3 px-4 font-semibold text-white">{{ $match->awayTeam->nombre ?? 'Visitante' }}</td>
-                            <td class="py-3 px-4 text-gray-400 text-xs">{{ $match->fecha }}</td>
-                            <td class="py-3 px-4 text-gray-300">{{ $match->sede }}</td>
+
+            
+                            <td class="py-3 px-4 font-semibold text-white">
+                                {{ $match->awayTeam->name ?? 'Visitante' }}
+                            </td>
+
+                            <td class="py-3 px-4 text-gray-400 text-xs">
+                                {{ $match->played_at ?? '-' }}
+                            </td>
+
+                    
+                            <td class="py-3 px-4 text-gray-300">
+                                {{ $match->venue ?? 'N/A' }}
+                            </td>
+
+                  
                             <td class="py-3 px-4">
                                 <span class="px-2.5 py-1 text-xs font-semibold rounded-full 
-                                    {{ $match->estado == 'Finalizado' ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 
-                                       ($match->estado == 'En Curso' ? 'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 animate-pulse' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20') }}">
-                                    {{ $match->estado ?? 'Programado' }}
+                                    {{ $match->status == 'finished' ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20' }}">
+                                    {{ ucfirst($match->status ?? 'Programado') }}
                                 </span>
                             </td>
+
+                    
                             <td class="py-3 px-4 text-center space-x-2">
-                                <a href="{{ route('admin.matches.edit', $match) }}" class="inline-block bg-amber-500/10 text-amber-400 hover:bg-amber-500/20 px-3 py-1 rounded text-xs font-medium transition">Editar</a>
-                                <form action="{{ route('admin.matches.destroy', $match) }}" method="POST" class="inline-block">
+                                <a href="{{ route('admin.matches.edit', $match) }}" class="inline-block bg-amber-500/10 text-amber-400 hover:bg-amber-500/20 px-3 py-1 rounded text-xs font-medium">Editar</a>
+                                <form action="{{ route('admin.matches.destroy', $match) }}" method="POST" class="inline-block" onsubmit="return confirm('¿Estás seguro de eliminar este partido?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="bg-red-500/10 text-red-400 hover:bg-red-500/20 px-3 py-1 rounded text-xs font-medium transition" onclick="return confirm('¿Desea eliminar este partido?')">Eliminar</button>
+                                    <button type="submit" class="bg-red-500/10 text-red-400 hover:bg-red-500/20 px-3 py-1 rounded text-xs font-medium">Eliminar</button>
                                 </form>
                             </td>
                         </tr>

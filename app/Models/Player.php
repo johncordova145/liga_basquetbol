@@ -18,10 +18,10 @@ class Player extends Model
 
     protected $fillable = [
         'team_id', 'first_name', 'last_name', 'jersey_number',
-        'position', 'height_cm', 'birth_date',
+        'position', 'height_cm', 'birthdate',
     ];
 
-    protected $casts = ['birth_date' => 'date'];
+    protected $casts = ['birthdate' => 'date'];
 
     public function team(): BelongsTo
     {

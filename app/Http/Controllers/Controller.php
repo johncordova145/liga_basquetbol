@@ -8,11 +8,16 @@ use Illuminate\Support\Str;
 
 abstract class Controller
 {
-
     protected function storeImage(UploadedFile $file, string $folder): string
     {
         $name = Str::random(24) . '.' . $file->extension();
-        $file->move(public_path("assets/img/{$folder}"), $name);
+        $destinationPath = public_path("assets/img/{$folder}");
+
+        if (!File::exists($destinationPath)) {
+            File::makeDirectory($destinationPath, 0755, true);
+        }
+
+        File::copy($file->getRealPath(), "{$destinationPath}/{$name}");
 
         return $name;
     }

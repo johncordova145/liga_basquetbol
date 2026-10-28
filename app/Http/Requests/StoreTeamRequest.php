@@ -14,14 +14,14 @@ class StoreTeamRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nombre' => 'required|string|max:255|unique:teams,nombre',
-            'codigo' => 'required|string|max:10',
-            'categoria' => 'required|string|max:255',
-            'zona' => 'required|string|max:255',
-            'bandera' => 'nullable|string|max:255',
-            'ciudad' => 'required|string|max:255',
-            'entrenador' => 'required|string|max:255',
-            'anio_fundacion' => 'required|integer|min:1900|max:' . date('Y'),
+            'name' => 'required|string|max:255|unique:teams,name',
+            'code' => 'required|string|max:10',
+            'category' => 'required|string|max:255',
+            'zone' => 'required|string|max:255',
+            'flag' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp,jfif', 'max:2048'],
+            'city' => 'required|string|max:255',
+            'coach' => 'required|string|max:255',
+            'founded' => 'required|integer|min:1900|max:' . date('Y'),
         ];
     }
 }

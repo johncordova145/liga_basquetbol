@@ -26,13 +26,12 @@ class StoreMatchRequest extends FormRequest
             'stage' => ['nullable', 'string', 'max:80'],
             'venue' => ['nullable', 'string', 'max:120'],
             'status' => ['required', Rule::in(array_keys(GameMatch::STATUSES))],
-            // El marcador es obligatorio solo si el partido está en vivo o terminó.
+
             'home_score' => ['nullable', 'integer', 'min:0', 'max:300', Rule::requiredIf($needsScore)],
             'away_score' => ['nullable', 'integer', 'min:0', 'max:300', Rule::requiredIf($needsScore)],
         ];
     }
 
-    /** Reglas de negocio que dependen de varios campos a la vez. */
     public function after(): array
     {
         return [
@@ -41,7 +40,7 @@ class StoreMatchRequest extends FormRequest
                     return;
                 }
 
-                // Los dos equipos deben ser de la misma categoría.
+
                 $categories = Team::whereIn('id', [$this->input('home_team_id'), $this->input('away_team_id')])
                     ->pluck('category')->unique();
 
@@ -49,7 +48,7 @@ class StoreMatchRequest extends FormRequest
                     $validator->errors()->add('away_team_id', 'Los dos equipos deben ser de la misma categoría.');
                 }
 
-                // En básquetbol no hay empates al finalizar.
+
                 if ($this->input('status') === GameMatch::FINISHED
                     && (int) $this->input('home_score') === (int) $this->input('away_score')) {
                     $validator->errors()->add('away_score', 'Un partido finalizado no puede terminar empatado.');
@@ -58,7 +57,6 @@ class StoreMatchRequest extends FormRequest
         ];
     }
 
-    /** Datos validados; si el partido está programado se descartan los puntajes. */
     public function payload(): array
     {
         $data = $this->validated();

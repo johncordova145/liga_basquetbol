@@ -13,6 +13,7 @@
             </a>
         @endforeach
     </div>
+    
 
 
     @if(isset($panels[$active]))
