@@ -14,3 +14,6 @@ class DatabaseSeeder extends Seeder
         ]);
     }
 }
+$this->call([
+    MacrorregionalSeeder::class,
+]);

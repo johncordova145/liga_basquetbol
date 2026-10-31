@@ -7,7 +7,7 @@
         <p class="text-sm text-gray-400">Resumen general de la Liga de Básquetbol</p>
     </div>
 
-    <!-- Tarjetas de Estadísticas usando las variables del controlador -->
+
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
         @foreach($stats as $stat)
             <div class="bg-gray-900 border border-gray-800 rounded-lg p-5">

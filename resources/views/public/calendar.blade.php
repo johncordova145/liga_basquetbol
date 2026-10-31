@@ -6,10 +6,10 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
-        <!-- Columna Izquierda: Listado por Días -->
+
         <div class="lg:col-span-2 space-y-6">
             
-            <!-- Barra de Categorías -->
+
             <div class="bg-gray-900 border border-gray-800 rounded-lg p-4">
                 <div class="flex space-x-6 text-sm font-semibold">
                     <a href="{{ route('calendar.public', ['categoria' => 'mayores', 'mes' => request('mes')]) }}" 
@@ -27,7 +27,6 @@
                 </div>
             </div>
 
-            <!-- Navegación de Meses (Opcional si usas $month) -->
             <div class="bg-gray-900 border border-gray-800 rounded-lg p-4 flex justify-between items-center text-white">
                 <a href="{{ route('calendar.public', ['mes' => $prev ?? '']) }}" class="px-3 py-1 bg-gray-800 hover:bg-gray-700 rounded text-sm">&larr; Mes Anterior</a>
                 <span class="font-bold text-orange-400 capitalize">
@@ -36,7 +35,7 @@
                 <a href="{{ route('calendar.public', ['mes' => $next ?? '']) }}" class="px-3 py-1 bg-gray-800 hover:bg-gray-700 rounded text-sm">Mes Siguiente &rarr;</a>
             </div>
 
-            <!-- Listado de Partidos Agrupados por Día ($days) -->
+
             @isset($days)
                 @forelse($days as $dateString => $matchesOnDay)
                     <div class="bg-gray-900 border border-gray-800 rounded-lg p-4 text-white shadow">
@@ -93,7 +92,7 @@
             @endisset
         </div>
 
-        <!-- Columna Derecha: Widget Lateral de Noticias -->
+   
         <div class="space-y-6">
             <div class="bg-gray-900 border border-gray-800 rounded-lg p-5 text-white">
                 <div class="flex items-center space-x-3 mb-4 pb-3 border-b border-gray-800">

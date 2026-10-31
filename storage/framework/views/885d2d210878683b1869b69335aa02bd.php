@@ -22,7 +22,7 @@
                 <li><a href="<?php echo e(route('news.index')); ?>" class="<?php echo e(request()->routeIs('news.*') ? 'active' : ''); ?>">Noticias</a></li>
                 <li><a href="<?php echo e(route('ranking.public')); ?>" class="<?php echo e(request()->routeIs('ranking.public') ? 'active' : ''); ?>">Clasificación</a></li>
                 <li><a href="<?php echo e(route('calendar.public')); ?>" class="<?php echo e(request()->routeIs('calendar.public') ? 'active' : ''); ?>">Calendario</a></li>
-                <li><a href="#" class="more-btn">Más</a></li>
+                <?php echo $__env->make('layouts.nav', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
                 <li><a href="<?php echo e(route('admin.dashboard')); ?>" class="admin-link">Panel Admin</a></li>
             </ul>
         </nav>
@@ -141,51 +141,7 @@
                 <img src="<?php echo e(asset('assets/img/logos/logo.png')); ?>" alt="Logo Oficial">
             </div>
         </aside>
-        <?php $__currentLoopData = $tables; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $categoryName => $standings): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <div class="mb-8">
-                <h3 class="text-xl font-bold text-white mb-4">Tabla de Posiciones - <?php echo e($categoryName); ?></h3>
-                
-                <div class="overflow-x-auto bg-slate-900 rounded-lg border border-slate-800">
-                    <table class="w-full text-left text-sm text-gray-300">
-                        <thead class="bg-slate-800 text-xs uppercase text-gray-400">
-                            <tr>
-                                <th class="px-4 py-3">Pos</th>
-                                <th class="px-4 py-3">Equipo</th>
-                                <th class="px-4 py-3 text-center">PJ</th>
-                                <th class="px-4 py-3 text-center">PG</th>
-                                <th class="px-4 py-3 text-center">PP</th>
-                                <th class="px-4 py-3 text-center">Pts</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $__empty_1 = true; $__currentLoopData = $standings; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $team): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                                <tr class="border-b border-slate-800 hover:bg-slate-800/50">
-                                    <td class="px-4 py-3 font-medium text-white"><?php echo e($index + 1); ?></td>
-                                    <td class="px-4 py-3 font-medium text-white flex items-center gap-2">
-                                        <?php if($team->shield): ?>
-                                            <img src="<?php echo e(asset('storage/' . $team->shield)); ?>" alt="" class="w-6 h-6 object-contain">
-                                        <?php endif; ?>
-                                        <?php echo e($team->name); ?>
-
-                                    </td>
-                                    <td class="px-4 py-3 text-center"><?php echo e($team->played ?? 0); ?></td>
-                                    <td class="px-4 py-3 text-center"><?php echo e($team->won ?? 0); ?></td>
-                                    <td class="px-4 py-3 text-center"><?php echo e($team->lost ?? 0); ?></td>
-                                    <td class="px-4 py-3 text-center font-bold text-yellow-500"><?php echo e($team->points ?? 0); ?></td>
-                                </tr>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                                <tr>
-                                    <td colspan="6" class="px-4 py-4 text-center text-gray-500">
-                                        No hay equipos o partidos registrados en esta categoría.
-                                    </td>
-                                </tr>
-                            <?php endif; ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-    </section>
+        
     </main>
 
     <footer class="site-footer">

@@ -24,7 +24,8 @@
                 <li><a href="{{ route('news.index') }}" class="{{ request()->routeIs('news') ? 'active' : '' }}">Noticias</a></li>
                 <li><a href="{{ route('ranking.public') }}" class="{{ request()->routeIs('ranking.public') ? 'active' : '' }}">Clasificación</a></li>
                 <li><a href="{{ route('calendar.public') }}" class="{{ request()->routeIs('calendar.public') ? 'active' : '' }}">Calendario</a></li>
-                <li><a href="#" class="more-btn">Más</a></li>
+                @include('layouts.nav')
+                
             </ul>
         </nav>
     </header>

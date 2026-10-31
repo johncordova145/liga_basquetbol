@@ -22,7 +22,7 @@
                 <li><a href="{{ route('news.index') }}">Noticias</a></li>
                 <li><a href="{{ route('ranking.public') }}">Clasificación</a></li>
                 <li><a href="{{ route('calendar.public') }}">Calendario</a></li>
-                <li><a href="#" class="more-btn">Más</a></li>
+                @include('layouts.nav')
                 <li><a href="{{ route('admin.dashboard') }}" class="admin-link">Panel Admin</a></li>
             </ul>
         </nav>

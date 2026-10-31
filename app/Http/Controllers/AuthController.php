@@ -24,12 +24,11 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
-            $request->session()->regenerate(); // evita "session fixation"
+            $request->session()->regenerate(); 
 
             /** @var User $user */
             $user = Auth::user();
 
-            // El admin entra directo a su panel; los demás vuelven al sitio.
             $default = ($user && $user->isAdmin()) ? route('admin.dashboard') : route('home');
 
             return redirect()->intended($default);
@@ -53,7 +52,7 @@ class AuthController extends Controller
             'password' => ['required', 'confirmed', Password::min(8)],
         ]);
 
-        $user = User::create($data); // rol "user" por el valor por defecto de la columna
+        $user = User::create($data); 
 
         Auth::login($user);
         $request->session()->regenerate();

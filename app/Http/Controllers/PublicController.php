@@ -13,8 +13,8 @@ class PublicController extends Controller
 {
     public function index(): View
     {
-        $news = News::whereNotNull('published_at')->latest('published_at')->paginate(9);
         
+        $news = \App\Models\News::latest()->get();
         return view('public.news.index', compact('news'));
     }
     public function home(): View
