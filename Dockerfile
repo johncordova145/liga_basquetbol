@@ -11,7 +11,7 @@ COPY . .
 # Instalar Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install --no-dev --optimize-autoloader
-
+RUN docker-php-ext-install pdo pdo_mysql
 # Exponer el puerto
 EXPOSE 80
 
