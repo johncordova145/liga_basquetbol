@@ -19,7 +19,7 @@
 
         <!-- Rejilla de Noticias -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            @forelse($noticias as $noticia)
+            @forelse($news as $noticia)
                 <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-lg flex flex-col hover:border-slate-700 transition duration-300">
                     
                     <!-- Imagen / Afiche -->
